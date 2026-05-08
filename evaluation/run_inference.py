@@ -119,7 +119,7 @@ def generate_solution_code(question, question_type, standard_results):
     [{expected_keys_str}]
     
     **Guidelines**:
-    1. **Libraries**: You have access to `scipy`, `pulp`, `ortools`, `numpy`, `sympy`, `networkx`, and `cvxpy`. Choose the best tool for the specific problem.
+    1. **Libraries**: You have access to `scipy`, `pulp`, `gurobi`, `ortools`, `numpy`, `sympy`, `networkx`, and `cvxpy`. Choose the best tool for the specific problem.
     2. **Performance**: Ensure the code runs within a reasonable time. Keep grid sizes small for numerical methods.
     3. **Output Format**: The code MUST use `print()` statements to clearly output the calculated results associated with the required keys.
     4. **Structure**: Write a simple, top-level script. **DO NOT** define functions or use `if __name__ == "__main__":`.
