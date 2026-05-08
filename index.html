@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OptiVerse: A Comprehensive Benchmark towards Optimization Problem Solving</title>
+    <style>
+        :root {
+            --primary-color: #1a73e8;
+            --secondary-color: #202124;
+            --background-color: #f8f9fa;
+            --border-color: #dadce0;
+            --shadow-sm: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--background-color);
+        }
+
+        .title-container {
+            text-align: center;
+            padding: 3rem 1rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #1a73e8, #4285f4);
+            border-radius: 12px;
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        nav {
+            background-color: #fff;
+            box-shadow: var(--shadow-sm);
+            padding: 1.2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #e8f0fe;
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        section {
+            background-color: #fff;
+            padding: 3rem;
+            margin-bottom: 2.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--border-color);
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            color: #34495e;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background-color: #fff;
+            box-shadow: var(--shadow-sm);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        tbody tr:hover {
+            background-color: #f1f3f4;
+            transition: background-color 0.2s ease;
+        }
+        
+        td:contains('✅') { color: #1e8e3e; }
+        td:contains('❌') { color: #d93025; }
+
+        /* Figure styles */
+        figure {
+            margin: 2.5rem auto;
+            width: 100%;
+            max-width: 900px;
+            text-align: center;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        figcaption {
+            color: #5f6368;
+            margin-top: 1rem;
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+
+        /* Resource Section Styles */
+        .resources-section {
+            background-color: #fff;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .resource-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            text-decoration: none;
+            color: var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            background: #fff;
+            border-color: var(--primary-color);
+        }
+
+        .resource-content h3 {
+            color: var(--primary-color);
+            margin: 0 0 0.5rem 0;
+            font-size: 1.25rem;
+        }
+
+        .resource-content p {
+            margin: 0;
+            color: #5f6368;
+            font-size: 0.95rem;
+        }
+
+        .resource-arrow {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateX(-10px);
+        }
+
+        .resource-card:hover .resource-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 3rem;
+            padding: 2.5rem;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 768px) {
+            section { padding: 1.5rem; }
+            .title { font-size: 1.8rem; }
+            nav ul { flex-direction: column; gap: 1rem; align-items: center; }
+            table { display: block; overflow-x: auto; white-space: nowrap; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="title-container">
+        <h1 class="title">OptiVerse</h1>
+        <p class="subtitle">A Comprehensive Benchmark towards Optimization Problem Solving</p>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#benchmark">Benchmark</a></li>
+            <li><a href="#methodology">DVA-Agent</a></li>
+            <li><a href="#experiments">Experiments</a></li>
+        </ul>
+    </nav>
+
+    <section id="overview">
+        <h2>Overview</h2>
+        <p>While Large Language Models (LLMs) demonstrate remarkable reasoning capabilities, complex optimization tasks remain highly challenging. Existing benchmarks focus narrowly on Mathematical Programming and Combinatorial Optimization, hindering comprehensive evaluation.</p>
+        <br>
+        <p>To address this, we introduce <strong>OptiVerse</strong>, a comprehensive benchmark of <strong>1,000 carefully curated optimization problems</strong> spanning six distinct and often neglected domains. Our extensive experiments with 22 LLMs reveal sharp performance degradation on hard problems, where even advanced models struggle to exceed 27% accuracy.</p>
+    </section>
+
+    <section id="benchmark">
+        <h2>Benchmark Details</h2>
+        <h3>Key Components</h3>
+        <ul>
+            <li><strong>Dataset Size:</strong> 1,000 high-quality, curated optimization problems.</li>
+            <li><strong>Six Domains:</strong> Mathematical Programming (MP), Combinatorial Optimization (CO), Stochastic Optimization (SO), Dynamic Optimization (DO), Optimal Control (OC), Game Optimization (GO).</li>
+            <li><strong>Three Difficulty Levels:</strong> Easy (300), Medium (400), Hard (300).</li>
+            <li><strong>Cross-Paradigm Versatility:</strong> Requires models to autonomously identify the paradigm and write executable code using various solvers (gurobi, scipy, cvxpy, pulp, etc.).</li>
+        </ul>
+
+        <figure>
+            <img src="fig/figure2.png" alt="Taxonomy of OptiVerse benchmark">
+            <figcaption>Figure 1: The hierarchical taxonomy of OptiVerse benchmark across six optimization domains.</figcaption>
+        </figure>
+
+        <table>
+            <caption>Table 1: Comparison with Existing Benchmarks</caption>
+            <thead>
+                <tr>
+                    <th>Benchmark</th>
+                    <th>Size</th>
+                    <th>Table</th>
+                    <th>Graph</th>
+                    <th>Answer Form</th>
+                    <th>MP</th>
+                    <th>CO</th>
+                    <th>SO</th>
+                    <th>DO</th>
+                    <th>OC</th>
+                    <th>GO</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>ComplexOR</td><td>37</td><td>❌</td><td>❌</td><td>Scalar</td><td>✅</td><td>✅</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td>
+                </tr>
+                <tr>
+                    <td>NLP4LP</td><td>269</td><td>❌</td><td>❌</td><td>Scalar</td><td>✅</td><td>✅</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td>
+                </tr>
+                <tr>
+                    <td>MAMO</td><td>863</td><td>✅</td><td>✅</td><td>Scalar</td><td>✅</td><td>✅</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td>
+                </tr>
+                <tr>
+                    <td>OptiBench</td><td>605</td><td>✅</td><td>❌</td><td>Scalar</td><td>✅</td><td>✅</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td>
+                </tr>
+                <tr style="background-color: #e8f0fe; font-weight: bold;">
+                    <td>OptiVerse (Ours)</td><td>1000</td><td>✅</td><td>✅</td><td>Vector</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <figure>
+            <img src="fig/figure3.png" alt="Domain distribution in OptiVerse">
+            <figcaption>Figure 2: Domain distribution in OptiVerse benchmark.</figcaption>
+        </figure>
+    </section>
+
+    <section id="methodology">
+        <h2>Dual-View Auditor Agent (DVA-Agent)</h2>
+        <p>Error analysis reveals that <strong>Modeling & Logic errors</strong> remain the primary bottleneck across all LLMs. To address this, we propose the Dual-View Auditor Agent (DVA-Agent). Unlike simple syntax checkers, DVA-Agent acts as an adversarial evaluator using <em>Semantic Triangulation</em>:</p>
+        <br>
+        <ul>
+            <li><strong>Requirement Extraction (Text-to-Math):</strong> Extracts missing constraints directly from the problem text.</li>
+            <li><strong>Blind Code Abstraction (Code-to-Math):</strong> Reverse-engineers the mathematical logic purely from the generated code, ignoring the original prompt.</li>
+            <li><strong>Cross-Reference Analysis:</strong> Compares the above to produce a discrepancy set. Modification is triggered only if semantic gaps exist.</li>
+        </ul>
+
+        <figure>
+            <img src="fig/figure6.png" alt="Workflow of Dual-View Auditor Agent">
+            <figcaption>Figure 3: The workflow of the Dual-View Auditor Agent.</figcaption>
+        </figure>
+    </section>
+
+    <section id="experiments">
+        <h2>Experimental Results</h2>
+        <p>We conducted an extensive empirical study evaluating 22 Large Language Models across varying scales (from 8B parameter models to flagship frontiers). We employ a robust two-stage <strong>LLM-as-a-Judge</strong> evaluation framework with a strict relative numerical error tolerance of <code>≤ 0.1%</code>.</p>
+        
+        <figure>
+            <img src="fig/figure5.png" alt="Distribution of error types">
+            <figcaption>Figure 4: Distribution of error types across representative models, showing Modeling & Logic Error as the primary bottleneck.</figcaption>
+        </figure>
+
+        <table>
+            <caption>Table 2: Main Model performance comparisons on the OptiVerse benchmark (%)</caption>
+            <thead>
+                <tr>
+                    <th rowspan="2">Large Language Model</th>
+                    <th colspan="6">Domain</th>
+                    <th colspan="3">Difficulty</th>
+                    <th rowspan="2">Avg.</th>
+                </tr>
+                <tr>
+                    <th>MP</th>
+                    <th>CO</th>
+                    <th>SO</th>
+                    <th>DO</th>
+                    <th>OC</th>
+                    <th>GO</th>
+                    <th>Easy</th>
+                    <th>Med.</th>
+                    <th>Hard</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td colspan="11" style="background-color: #f1f3f4; font-weight: bold; text-align: left;">Open-Source Non-Thinking Models</td></tr>
+                <tr><td>Qwen3-8B-Instruct</td><td>23.98</td><td>22.69</td><td>20.83</td><td>14.38</td><td>6.41</td><td>13.73</td><td>42.67</td><td>12.25</td><td>7.67</td><td>20.00</td></tr>
+                <tr><td>Qwen3-30B-Instruct</td><td>38.96</td><td>36.13</td><td>31.67</td><td>34.25</td><td>19.23</td><td>15.69</td><td>70.33</td><td>21.75</td><td>14.00</td><td>34.00</td></tr>
+                <tr><td>Qwen3-235B-Instruct</td><td>44.41</td><td>47.06</td><td>45.83</td><td>41.10</td><td>42.31</td><td>41.18</td><td>78.33</td><td>39.75</td><td>16.67</td><td>44.40</td></tr>
+                <tr><td>DeepSeek-V3.2-Chat</td><td>51.23</td><td>47.48</td><td>45.00</td><td>43.15</td><td>21.79</td><td>35.29</td><td>79.67</td><td>39.25</td><td>19.00</td><td>45.30</td></tr>
+                
+                <tr><td colspan="11" style="background-color: #f1f3f4; font-weight: bold; text-align: left;">Open-Source Thinking Models</td></tr>
+                <tr><td>Qwen3-30B-Thinking</td><td>49.59</td><td>46.64</td><td>46.67</td><td>46.58</td><td>30.77</td><td>43.14</td><td>80.67</td><td>40.00</td><td>20.33</td><td>46.30</td></tr>
+                <tr><td>DeepSeek-V3.2-Reasoner</td><td>53.68</td><td>52.52</td><td>45.00</td><td>49.32</td><td>28.21</td><td>49.02</td><td>84.33</td><td>44.50</td><td>21.33</td><td>49.50</td></tr>
+                <tr><td>Qwen3-235B-Thinking</td><td>53.68</td><td>51.26</td><td>49.17</td><td>52.74</td><td>43.59</td><td>49.02</td><td>87.33</td><td>47.00</td><td>21.33</td><td>51.40</td></tr>
+
+                <tr><td colspan="11" style="background-color: #f1f3f4; font-weight: bold; text-align: left;">Closed-Source Models</td></tr>
+                <tr><td>Gemini-2.5-Pro</td><td>53.68</td><td>49.16</td><td>50.00</td><td>47.95</td><td>38.46</td><td>43.14</td><td>87.00</td><td>43.75</td><td>20.00</td><td>49.60</td></tr>
+                <tr><td>o3</td><td>52.04</td><td>53.78</td><td>45.83</td><td>56.85</td><td>39.74</td><td>45.10</td><td>86.67</td><td>47.25</td><td>20.67</td><td>51.10</td></tr>
+                <tr><td>GPT-5.2</td><td>55.86</td><td>57.14</td><td>50.00</td><td>57.53</td><td>50.00</td><td>54.90</td><td>91.00</td><td>50.75</td><td>25.33</td><td>55.20</td></tr>
+                <tr><td>Gemini-3-Pro</td><td>58.04</td><td>57.14</td><td>56.67</td><td>56.85</td><td>42.31</td><td>50.98</td><td>89.00</td><td>52.75</td><td>27.00</td><td>55.90</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="resources-section">
+        <h2>Quick Links & Resources</h2>
+        <div class="resource-grid">
+            <a href="https://arxiv.org/abs/2604.21510" class="resource-card" target="_blank" rel="noopener noreferrer">
+                <div class="resource-content">
+                    <h3>📄 Paper</h3>
+                    <p>Read the full paper on arXiv</p>
+                </div>
+                <span class="resource-arrow">→</span>
+            </a>
+            <a href="https://huggingface.co/datasets/Waicheng/OptiVerse" class="resource-card" target="_blank" rel="noopener noreferrer">
+                <div class="resource-content">
+                    <h3>🤗 Dataset</h3>
+                    <p>Access OptiVerse on Hugging Face</p>
+                </div>
+                <span class="resource-arrow">→</span>
+            </a>
+            <a href="https://github.com/Waichenbxx/OptiVerse" class="resource-card" target="_blank" rel="noopener noreferrer">
+                <div class="resource-content">
+                    <h3>💻 Code</h3>
+                    <p>View evaluation code and Prompts on GitHub</p>
+                </div>
+                <span class="resource-arrow">→</span>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>
+                <strong>OptiVerse</strong> has been accepted to <strong>ACL 2026 Findings</strong>.<br>
+                For detailed documentation and implementation details, please refer to our 
+                <a href="https://github.com/Waichenbxx/OptiVerse" target="_blank" rel="noopener noreferrer">GitHub repository</a> and 
+                <a href="https://huggingface.co/datasets/Waicheng/OptiVerse" target="_blank" rel="noopener noreferrer">Hugging Face</a> page.
+            </p>
+            <br>
+            <p style="font-size: 0.9em; color: #666;">
+                @article{zhang2026optiverse, title={OptiVerse: A Comprehensive Benchmark towards Optimization Problem Solving}, author={Zhang, Boxuan and others}, journal={arXiv preprint arXiv:2604.21510}, year={2026} }
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
