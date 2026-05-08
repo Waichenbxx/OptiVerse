@@ -1,7 +1,8 @@
 # OptiVerse: A Comprehensive Benchmark towards Optimization Problem Solving
 
+[![Project Page](https://img.shields.io/badge/🌍_Project_Page-OptiVerse-1a73e8.svg)](https://waichenbxx.github.io/OptiVerse/)
 [![arXiv](https://img.shields.io/badge/📄_arXiv_Paper-2604.21510-b31b1b.svg)](https://arxiv.org/abs/2604.21510)
-[![Dataset](https://img.shields.io/badge/🤗_Hugging_Face_Dataset-Waicheng/OptiVerse-blue.svg)](https://huggingface.co/datasets/Waicheng/OptiVerse)
+[![Dataset](https://img.shields.io/badge/🤗_Hugging_Face-Dataset-ffc107.svg)](https://huggingface.co/datasets/Waicheng/OptiVerse)
 [![GitHub](https://img.shields.io/badge/💻_GitHub_Repository-Waichenbxx/OptiVerse-black.svg)](https://github.com/Waichenbxx/OptiVerse)
 
 
@@ -241,7 +242,7 @@ If you find OptiVerse useful in your research, please cite our paper:
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 🔗 Quick Links
-- [📄 Paper][arXiv:2604.21510](https://arxiv.org/abs/2604.21510) 
+- [📄 Paper][OptiVerse: A Comprehensive Benchmark towards Optimization Problem Solving](https://arxiv.org/abs/2604.21510) 
 - [🤗 Dataset][Hugging Face - Waicheng/OptiVerse](https://huggingface.co/datasets/Waicheng/OptiVerse)
 - [🌐 Project Page][OptiVerse Website](https://waichenbxx.github.io/OptiVerse/)
 - [💻 GitHub Repository][GitHub - Waichenbxx/OptiVerse](https://github.com/Waichenbxx/OptiVerse)
