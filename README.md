@@ -57,33 +57,126 @@ To handle the complexity of diverse solver outputs and varying formatting styles
 
 We conducted an extensive empirical study evaluating 22 Large Language Models across varying scales. [cite_start]The comprehensive evaluation results on the benchmark are presented below[cite: 233, 236]:
 
-| Large Language Model | MP | CO | DO | SO | OC | GO | Easy | Med. | Hard | Avg. |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Open-Source Non-Thinking Models** | | | | | | | | | | |
-| Internlm3-8B-instruct | 11.44 | 0.00 | 8.22 | 7.56 | 5.00 | 3.92 | 18.67 | 3.75 | 3.00 | 8.00 |
-| Ministral3-8B-Instruct | 26.01 | 2.56 | 12.08 | 19.35 | 18.44 | 5.88 | 39.33 | 14.75 | 5.67 | 18.20 |
-| Qwen3-8B-Instruct | 23.98 | 6.41 | 14.38 | 20.83 | 22.69 | 13.73 | 42.67 | 12.25 | 7.67 | 20.00 |
-| Qwen2.5-72B | 31.61 | 27.31 | 15.75 | 7.69 | 20.00 | 13.73 | 48.00 | 16.50 | 10.33 | 24.10 |
-| Qwen3-Coder-30B | 30.79 | 8.97 | 23.29 | 23.33 | 31.09 | 9.80 | 49.67 | 19.25 | 11.67 | 26.10 |
-| Qwen3-30B-Instruct | 38.96 | 36.13 | 31.67 | 34.25 | 19.23 | 15.69 | 70.33 | 21.75 | 14.00 | 34.00 |
-| Kimi-K2 | 40.05 | 24.36 | 39.73 | 38.33 | 44.54 | 25.49 | 71.33 | 31.50 | 16.33 | 38.90 |
-| Qwen3-235B-Instruct | 44.41 | 42.31 | 41.10 | 45.83 | 47.06 | 41.18 | 78.33 | 39.75 | 16.67 | 44.40 |
-| DeepSeek-V3.2-Chat | 51.23 | 45.00 | 47.48 | 21.79 | 43.15 | 35.29 | 79.67 | 39.25 | 19.00 | 45.30 |
-| **Open-Source Thinking Models** | | | | | | | | | | |
-| Qwen3-8B-Thinking | 40.33 | 39.73 | 25.64 | 41.67 | 43.70 | 37.25 | 73.00 | 33.00 | 16.00 | 39.90 |
-| GPT-OSS-120B | 49.54 | 38.93 | 32.05 | 34.19 | 55.33 | 35.29 | 78.67 | 39.25 | 18.67 | 44.90 |
-| Qwen3-30B-Thinking | 49.59 | 46.58 | 30.77 | 46.67 | 46.64 | 43.14 | 80.67 | 40.00 | 20.33 | 46.30 |
-| DeepSeek-V3.2-Reasoner | 53.68 | 49.32 | 28.21 | 45.00 | 52.52 | 49.02 | 84.33 | 44.50 | 21.33 | 49.50 |
-| Qwen3-235B-Thinking | 53.68 | 52.74 | 43.59 | 49.17 | 51.26 | 49.02 | 87.33 | 47.00 | 21.33 | 51.40 |
-| **Closed-Source Models** | | | | | | | | | | |
-| Gemini-2.5-Flash | 46.05 | 48.33 | 46.22 | 48.63 | 48.72 | 54.90 | 82.33 | 42.75 | 18.67 | 47.40 |
-| Gemini-2.5-Pro | 53.68 | 49.16 | 50.00 | 47.95 | 38.46 | 43.14 | 87.00 | 43.75 | 20.00 | 49.60 |
-| Claude-4.5-Sonnet | 53.41 | 47.95 | 34.62 | 46.67 | 52.52 | 45.10 | 83.67 | 45.25 | 21.67 | 49.70 |
-| o3 | 52.04 | 53.78 | 45.83 | 56.85 | 39.74 | 45.10 | 86.67 | 47.25 | 20.67 | 51.10 |
-| o4-mini | 50.95 | 42.31 | 54.20 | 48.33 | 55.48 | 47.06 | 87.67 | 46.75 | 20.67 | 51.20 |
-| GPT-5.2 | 55.86 | 57.14 | 50.00 | 57.53 | 50.00 | 54.90 | 91.00 | 50.75 | 25.33 | 55.20 |
-| Gemini-3-Flash | 54.77 | 59.24 | 54.17 | 55.48 | 48.72 | 56.86 | 88.67 | 53.25 | 25.33 | 55.50 |
-| Gemini-3-Pro | 58.04 | 56.85 | 56.67 | 57.14 | 42.31 | 50.98 | 89.00 | 52.75 | 27.00 | 55.90 |
+<table align="center">
+  <thead>
+    <tr>
+      <th rowspan="2">Large Language Model</th>
+      <th colspan="6">Domain</th>
+      <th colspan="3">Difficulty</th>
+      <th rowspan="2">Avg.</th>
+    </tr>
+    <tr>
+      <th>MP</th>
+      <th>CO</th>
+      <th>SO</th>
+      <th>DO</th>
+      <th>OC</th>
+      <th>GO</th>
+      <th>Easy</th>
+      <th>Med.</th>
+      <th>Hard</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="11" align="center" bgcolor="#f2f2f2"><b>Open-Source Non-Thinking Models</b></td>
+    </tr>
+    <tr>
+      <td>Internlm3-8B-instruct</td>
+      <td>11.44</td><td>7.56</td><td>5.00</td><td>8.22</td><td>0.00</td><td>3.92</td><td>18.67</td><td>3.75</td><td>3.00</td><td>8.00</td>
+    </tr>
+    <tr>
+      <td>Ministral3-8B-Instruct</td>
+      <td>26.01</td><td>18.44</td><td>19.35</td><td>12.08</td><td>2.56</td><td>5.88</td><td>39.33</td><td>14.75</td><td>5.67</td><td>18.20</td>
+    </tr>
+    <tr>
+      <td>Qwen3-8B-Instruct</td>
+      <td>23.98</td><td>22.69</td><td>20.83</td><td>14.38</td><td>6.41</td><td>13.73</td><td>42.67</td><td>12.25</td><td>7.67</td><td>20.00</td>
+    </tr>
+    <tr>
+      <td>Qwen2.5-72B</td>
+      <td>31.61</td><td>27.31</td><td>20.00</td><td>15.75</td><td>7.69</td><td>13.73</td><td>48.00</td><td>16.50</td><td>10.33</td><td>24.10</td>
+    </tr>
+    <tr>
+      <td>Qwen3-Coder-30B</td>
+      <td>30.79</td><td>31.09</td><td>23.33</td><td>23.29</td><td>8.97</td><td>9.80</td><td>49.67</td><td>19.25</td><td>11.67</td><td>26.10</td>
+    </tr>
+    <tr>
+      <td>Qwen3-30B-Instruct</td>
+      <td>38.96</td><td>36.13</td><td>31.67</td><td>34.25</td><td>19.23</td><td>15.69</td><td>70.33</td><td>21.75</td><td>14.00</td><td>34.00</td>
+    </tr>
+    <tr>
+      <td>Kimi-K2</td>
+      <td>40.05</td><td>44.54</td><td>38.33</td><td>39.73</td><td>24.36</td><td>25.49</td><td>71.33</td><td>31.50</td><td>16.33</td><td>38.90</td>
+    </tr>
+    <tr>
+      <td>Qwen3-235B-Instruct</td>
+      <td>44.41</td><td>47.06</td><td>45.83</td><td>41.10</td><td>42.31</td><td>41.18</td><td>78.33</td><td>39.75</td><td>16.67</td><td>44.40</td>
+    </tr>
+    <tr>
+      <td>DeepSeek-V3.2-Chat</td>
+      <td>51.23</td><td>47.48</td><td>45.00</td><td>43.15</td><td>21.79</td><td>35.29</td><td>79.67</td><td>39.25</td><td>19.00</td><td>45.30</td>
+    </tr>
+    <tr>
+      <td colspan="11" align="center" bgcolor="#f2f2f2"><b>Open-Source Thinking Models</b></td>
+    </tr>
+    <tr>
+      <td>Qwen3-8B-Thinking</td>
+      <td>40.33</td><td>43.70</td><td>41.67</td><td>39.73</td><td>25.64</td><td>37.25</td><td>73.00</td><td>33.00</td><td>16.00</td><td>39.90</td>
+    </tr>
+    <tr>
+      <td>GPT-OSS-120B</td>
+      <td>49.54</td><td>55.33</td><td>34.19</td><td>38.93</td><td>32.05</td><td>35.29</td><td>78.67</td><td>39.25</td><td>18.67</td><td>44.90</td>
+    </tr>
+    <tr>
+      <td>Qwen3-30B-Thinking</td>
+      <td>49.59</td><td>46.64</td><td>46.67</td><td>46.58</td><td>30.77</td><td>43.14</td><td>80.67</td><td>40.00</td><td>20.33</td><td>46.30</td>
+    </tr>
+    <tr>
+      <td>DeepSeek-V3.2-Reasoner</td>
+      <td>53.68</td><td>52.52</td><td>45.00</td><td>49.32</td><td>28.21</td><td>49.02</td><td>84.33</td><td>44.50</td><td>21.33</td><td>49.50</td>
+    </tr>
+    <tr>
+      <td>Qwen3-235B-Thinking</td>
+      <td>53.68</td><td>51.26</td><td>49.17</td><td>52.74</td><td>43.59</td><td>49.02</td><td>87.33</td><td>47.00</td><td>21.33</td><td>51.40</td>
+    </tr>
+    <tr>
+      <td colspan="11" align="center" bgcolor="#f2f2f2"><b>Closed-Source Thinking Models</b></td>
+    </tr>
+    <tr>
+      <td>Gemini-2.5-Flash</td>
+      <td>46.05</td><td>46.22</td><td>48.33</td><td>48.63</td><td>48.72</td><td>54.90</td><td>82.33</td><td>42.75</td><td>18.67</td><td>47.40</td>
+    </tr>
+    <tr>
+      <td>Gemini-2.5-Pro</td>
+      <td>53.68</td><td>49.16</td><td>50.00</td><td>47.95</td><td>38.46</td><td>43.14</td><td>87.00</td><td>43.75</td><td>20.00</td><td>49.60</td>
+    </tr>
+    <tr>
+      <td>Claude-4.5-Sonnet</td>
+      <td>53.41</td><td>52.52</td><td>46.67</td><td>47.95</td><td>34.62</td><td>45.10</td><td>83.67</td><td>45.25</td><td>21.67</td><td>49.70</td>
+    </tr>
+    <tr>
+      <td>o3</td>
+      <td>52.04</td><td>53.78</td><td>45.83</td><td>56.85</td><td>39.74</td><td>45.10</td><td>86.67</td><td>47.25</td><td>20.67</td><td>51.10</td>
+    </tr>
+    <tr>
+      <td>o4-mini</td>
+      <td>50.95</td><td>54.20</td><td>48.33</td><td>55.48</td><td>42.31</td><td>47.06</td><td>87.67</td><td>46.75</td><td>20.67</td><td>51.20</td>
+    </tr>
+    <tr>
+      <td>GPT-5.2</td>
+      <td>55.86</td><td>57.14</td><td>50.00</td><td>57.53</td><td>50.00</td><td>54.90</td><td>91.00</td><td>50.75</td><td>25.33</td><td>55.20</td>
+    </tr>
+    <tr>
+      <td>Gemini-3-Flash</td>
+      <td>54.77</td><td>59.24</td><td>54.17</td><td>55.48</td><td>48.72</td><td>56.86</td><td>88.67</td><td>53.25</td><td>25.33</td><td>55.50</td>
+    </tr>
+    <tr>
+      <td>Gemini-3-Pro</td>
+      <td>58.04</td><td>57.14</td><td>56.67</td><td>56.85</td><td>42.31</td><td>50.98</td><td>89.00</td><td>52.75</td><td>27.00</td><td>55.90</td>
+    </tr>
+  </tbody>
+</table>
 
 ## 💡 Key Findings
 1. **Significant Difficulty Sensitivity**: All LLMs exhibit sharp performance degradation as task difficulty scales. While top-tier models maintain high accuracy on Easy problems, they struggle profoundly with Hard problems—even advanced models like GPT-5.2 and Gemini-3-Pro fail to exceed **27%** accuracy.
