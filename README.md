@@ -242,7 +242,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 🔗 Quick Links
 
-* **Paper**: [OptiVerse: A Comprehensive Benchmark towards Optimization Problem Solving](https://arxiv.org/abs/2604.21510) 
-* **Code**: [GitHub - Waichenbxx/OptiVerse](https://github.com/Waichenbxx/OptiVerse)
-* **Dataset**: [Hugging Face - Waicheng/OptiVerse](https://huggingface.co/datasets/Waicheng/OptiVerse)
-* **ArXiv**: [arXiv:2604.21510](https://arxiv.org/abs/2604.21510)
+* - [📄 Paper] [OptiVerse: A Comprehensive Benchmark towards Optimization Problem Solving](https://arxiv.org/abs/2604.21510) 
+* - [🤗 Dataset] [Hugging Face - Waicheng/OptiVerse](https://huggingface.co/datasets/Waicheng/OptiVerse)
+* - [🌐 Project Page] [Hugging Face - Waicheng/OptiVerse](https://huggingface.co/datasets/Waicheng/OptiVerse)
+* - [💻 GitHub Repository] [GitHub - Waichenbxx/OptiVerse](https://github.com/Waichenbxx/OptiVerse)
