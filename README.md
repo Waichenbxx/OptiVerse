@@ -42,6 +42,48 @@ Unlike simple syntax checkers, DVA-Agent acts as an adversarial evaluator using 
 2. **Blind Code Abstraction**: Reverse-engineers the mathematical logic purely from the generated code.
 3. **Cross-Reference Analysis**: Compares the above to produce a discrepancy set. Modification is triggered only if discrepancies exist.
 
+## 🔧 Data Collection & Curation
+
+To construct a benchmark that is both comprehensive and rigorously challenging, we curated a massive dataset derived from highly authoritative academic resources through a meticulous five-stage pipeline:
+
+1. **Acquisition**: Sourced from a raw corpus of 82 distinct authoritative textbooks, graduate entrance exams, and applied modeling case studies (encompassing 26,702 pages).
+2. **Standardization**: Processed using the MinerU2.5 framework to accurately extract and preserve complex tabular and graphical data alongside textual descriptions.
+3. **Verification & Translation**: Rigorously reviewed and translated by domain-expert Ph.D. and Master's students in Operations Research to guarantee technical precision and correct mathematical notation.
+4. **Quality Filtering**: Strictly excluded problems whose solutions were readily accessible through web searches to mitigate data contamination risks.
+5. **Classification**: Organized into a 2D taxonomy spanning the 6 optimization domains and 3 difficulty levels.
+
+## 🔍 Evaluation Framework
+
+To handle the complexity of diverse solver outputs and varying formatting styles, we employ a robust two-stage **LLM-as-a-Judge** evaluation methodology:
+
+* **Stage 1: Answer Extraction**: A Structure Synthesis Prompt acts as an extractor, parsing raw execution logs and unstructured intermediate outputs into a clean, valid JSON object containing specific numerical values and decisions.
+* **Stage 2: Answer Verification**: A judge model (acting as a "Strict Mathematics Teaching Assistant") evaluates the extracted JSON against the Ground Truth based on three rigorous criteria:
+  * **Completeness & Precision**: Enforces a strict relative numerical error tolerance of **$\le 0.1\%$**.
+  * **Semantic Flexibility**: Intelligently handles unit variations (e.g., "0.5" vs. "50%") and assesses the semantic equivalence of non-numerical strategies (e.g., game theory decisions).
+  * **Reasoning-First Verification**: Generates a step-by-step verification log prior to delivering the final `is_correct` boolean verdict.
+
+## 📈 Experimental Results
+
+We conducted an extensive empirical study evaluating 22 Large Language Models across varying scales (from 8B parameter models to flagship frontiers like GPT-5.2 and Gemini-3-Pro). 
+
+**Key Findings:**
+1. **Significant Difficulty Sensitivity**: All LLMs exhibit sharp performance degradation as task difficulty scales. While top-tier models maintain high accuracy on Easy problems, they struggle profoundly with Hard problems—even advanced models like GPT-5.2 and Gemini-3-Pro fail to exceed **27%** accuracy.
+2. **Superiority of Reasoning Chains**: Models equipped with explicit reasoning capabilities (e.g., Qwen3-Thinking, DeepSeek-Reasoner, OpenAI o3) consistently outperform their standard instruction-tuned counterparts by a significant margin.
+3. **Domain-Specific Fragility**: Models lack cross-domain robustness. Success rates in understudied categories (e.g., Optimal Control, Dynamic Optimization) severely trail behind common Mathematical Programming and Combinatorial Optimization tasks.
+4. **Modeling is the Primary Bottleneck**: Fine-grained error analysis reveals that *Modeling & Logic errors* constitute the predominant bottleneck, often manifesting as silent semantic discrepancies despite successful code execution.
+
+## 📝 Citation
+
+If you find OptiVerse useful in your research, please cite our paper:
+
+```bibtex
+@article{zhang2026optiverse,
+  title={OptiVerse: A Comprehensive Benchmark towards Optimization Problem Solving},
+  author={Zhang, Xinyu and Zhang, Boxuan and Wan, Yuchen and Zhang, Lingling and Yao, Yixing and Wei, Bifan and Wu, Yaqiang and Liu, Jun},
+  journal={arXiv preprint arXiv:2604.21510},
+  year={2026}
+}
+
 ## 🚀 Getting Started
 
 ### 1. Installation
