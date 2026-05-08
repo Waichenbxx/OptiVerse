@@ -72,17 +72,6 @@ We conducted an extensive empirical study evaluating 22 Large Language Models ac
 3. **Domain-Specific Fragility**: Models lack cross-domain robustness. Success rates in understudied categories (e.g., Optimal Control, Dynamic Optimization) severely trail behind common Mathematical Programming and Combinatorial Optimization tasks.
 4. **Modeling is the Primary Bottleneck**: Fine-grained error analysis reveals that *Modeling & Logic errors* constitute the predominant bottleneck, often manifesting as silent semantic discrepancies despite successful code execution.
 
-## 📝 Citation
-
-If you find OptiVerse useful in your research, please cite our paper:
-
-```bibtex
-@article{zhang2026optiverse,
-  title={OptiVerse: A Comprehensive Benchmark towards Optimization Problem Solving},
-  author={Zhang, Xinyu and Zhang, Boxuan and Wan, Yuchen and Zhang, Lingling and Yao, Yixing and Wei, Bifan and Wu, Yaqiang and Liu, Jun},
-  journal={arXiv preprint arXiv:2604.21510},
-  year={2026}
-}
 
 ## 🚀 Getting Started
 
