@@ -241,8 +241,7 @@ If you find OptiVerse useful in your research, please cite our paper:
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 🔗 Quick Links
-
-- [📄 Paper](https://arxiv.org/abs/2604.21510) 
-- [🤗 Dataset](https://huggingface.co/datasets/Waicheng/OptiVerse)
-- [🌐 Project Page](https://waichenbxx.github.io/OptiVerse/)
-- [💻 GitHub Repository](https://github.com/Waichenbxx/OptiVerse)
+- [📄 Paper][arXiv:2604.21510](https://arxiv.org/abs/2604.21510) 
+- [🤗 Dataset][Hugging Face - Waicheng/OptiVerse](https://huggingface.co/datasets/Waicheng/OptiVerse)
+- [🌐 Project Page][OptiVerse Website](https://waichenbxx.github.io/OptiVerse/)
+- [💻 GitHub Repository][GitHub - Waichenbxx/OptiVerse](https://github.com/Waichenbxx/OptiVerse)
