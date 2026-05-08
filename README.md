@@ -7,7 +7,7 @@
 
 ---
 
-> **OptiVerse has been accepted to ACL 2026 Findings**
+**OptiVerse has been accepted to ACL 2026 Findings**
 
 ## 📋 Overview
 
