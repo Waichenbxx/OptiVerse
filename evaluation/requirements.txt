@@ -1,0 +1,19 @@
+# ==========================================
+# Core Script Dependencies
+# (Required for running the Python scripts)
+# ==========================================
+openai>=1.0.0
+tqdm>=4.66.0
+
+# ==========================================
+# LLM Execution Environment Dependencies
+# (Libraries authorized in the prompts for optimization solving)
+# ==========================================
+numpy
+scipy
+sympy
+pulp
+ortools
+networkx
+cvxpy
+gurobipy
