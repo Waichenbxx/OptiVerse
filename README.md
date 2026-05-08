@@ -111,7 +111,7 @@ If you find OptiVerse useful in your research, please cite our paper:
 
     @article{zhang2026optiverse,
       title={OptiVerse: A Comprehensive Benchmark towards Optimization Problem Solving},
-      author={Zhang, Boxuan and others},
+      author={Zhang, Xinyu and Zhang, Boxuan and Wan, Yuchen and Zhang, Lingling and Yao, Yixing and Wei, Bifan and Wu, Yaqiang and Liu, Jun},
       journal={arXiv preprint arXiv:2604.21510},
       year={2026}
     }
