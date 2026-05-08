@@ -4,13 +4,10 @@
 [![Dataset](https://img.shields.io/badge/🤗_Hugging_Face_Dataset-Waicheng/OptiVerse-blue.svg)](https://huggingface.co/datasets/Waicheng/OptiVerse)
 [![GitHub](https://img.shields.io/badge/💻_GitHub_Repository-Waichenbxx/OptiVerse-black.svg)](https://github.com/Waichenbxx/OptiVerse)
 
-![License](https://img.shields.io/badge/License-MIT-green.svg)
-![Data Size](https://img.shields.io/badge/Data-1000_Problems-blue)
-![Domains](https://img.shields.io/badge/Domains-6_Categories-orange)
 
 ---
 
-🔥 **News**: OptiVerse has been accepted to **ACL 2026 Findings**!
+OptiVerse has been accepted to **ACL 2026 Findings**
 
 ## 📋 Overview
 
