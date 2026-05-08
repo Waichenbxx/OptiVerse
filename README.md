@@ -71,10 +71,8 @@ Generate modeling code and execute it in the sandbox environment:
 Evaluate the executed results against the ground truth using our 0.1% relative tolerance framework:
 
     python evaluate.py \
-      --input_file "./results/results_deepseek_chat.json" \
-      --output_dir "./results/evaluation" \
-      --target_model "deepseek-chat" \
-      --judge_model "gpt-4o"
+      --input_file "./results/solved.json" \
+      --output_dir "./results/evaluation" 
 
 ## 📝 Citation
 
